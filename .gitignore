@@ -1,0 +1,36 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+*.eclipse
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Credentials & secrets
+application-prod.yml
+application-local.yml
+.env
+.env.local
+*.env
+
+# Spring Boot
+spring-boot-*.jar

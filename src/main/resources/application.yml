@@ -1,0 +1,71 @@
+spring:
+  application:
+    name: ticketing-mundial-2026-backend
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:ticketing_mundial}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        default_schema: ticketing
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:dev-secret-key-please-change-in-production-must-be-at-least-32-chars}
+    expiration-ms: 86400000
+
+  commission-rate: 0.05
+
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:3000}
+
+server:
+  port: ${PORT:8080}
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    com.ucu.ticketing: DEBUG
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  jpa:
+    show-sql: false
+
+logging:
+  level:
+    root: WARN
+    com.ucu.ticketing: INFO
