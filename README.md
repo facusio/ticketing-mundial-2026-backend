@@ -38,7 +38,7 @@ Trabajo Obligatorio — Bases de Datos II, UCU 2026.
 
 2. Ejecutar el script DDL (crea el schema `ticketing` y todas las tablas, triggers y vistas):
    ```bash
-   psql -U postgres -d ticketing_mundial -f ticketing_mundial_2026_v3_create.sql
+   psql -U postgres -d ticketing_mundial -f src/main/resources/db/create.sql
    ```
 
    El script crea:
